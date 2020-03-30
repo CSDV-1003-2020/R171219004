@@ -255,6 +255,50 @@ void single_llist::insert_pos()
     }
 }
 
+ /*
+ * Delete element at a given position
+ */
+void single_llist::delete_pos()
+{
+    int pos, i, counter = 0;
+    cout<<"Enter the position of value to be deleted: ";
+    cin>>pos;
+    cout<<"Enter the node postion to be updated: ";
+    cin>>pos;
+    cout<<"Enter the new value: ";
+    cin>>value;
+    struct node *s, *ptr;
+    s = start;
+    if (pos == 1)
+    {
+        start = s->next;
+    }
+    else
+    {
+        while (s != NULL)
+        {
+            s = s->next;
+            counter++;  
+        }
+        if (pos > 0 && pos <= counter)
+        {
+            s = start;
+            for (i = 1;i < pos;i++)
+            {
+                ptr = s;
+                s = s->next;
+            }
+            ptr->next = s->next;
+        }
+        else
+        {
+            cout<<"Position out of range"<<endl;
+        }
+        free(s);
+        cout<<"Element Deleted"<<endl;
+    }
+}
+
 /*
  * Update a given Node
  */
@@ -266,14 +310,6 @@ void single_llist::update()
         cout<<"List is empty"<<endl;
         return;
     }
-    cout<<"Enter the node postion to be updated: ";
-    cin>>pos;
-    cout<<"Enter the new value: ";
-    cin>>value;
-    struct node *s, *ptr;
-    s = start;
-    if (pos == 1)
-    {
         start->info = value; 
     }
     else
