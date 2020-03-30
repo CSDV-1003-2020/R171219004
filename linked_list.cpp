@@ -138,20 +138,13 @@ node *single_llist::create_node(int value)
 }
 
 /*
-<<<<<<< HEAD
  * Inserting element in beginning
- */
+*/
 void single_llist::insert_begin()
-=======
- * Inserting Node at last
- */
-void single_llist::insert_last()
->>>>>>> origin/R171219005
 {
     int value;
     cout<<"Enter the value to be inserted: ";
     cin>>value;
-<<<<<<< HEAD
     struct node *temp, *p;
     temp = create_node(value);
     if (start == NULL)
@@ -167,7 +160,39 @@ void single_llist::insert_last()
     }
     cout<<"Element Inserted at beginning"<<endl;
 }
-=======
+
+/*
+ * Sorting Link List
+ */
+void single_llist::sort()
+{
+    struct node *ptr, *s;
+    int value;
+    if (start == NULL)
+    {
+        cout<<"The List is empty"<<endl;
+        return;
+    }
+    ptr = start;
+    while (ptr != NULL)
+    {
+        for (s = ptr->next;s !=NULL;s = s->next)
+        {
+            if (ptr->info > s->info)
+            {
+                value = ptr->info;
+                ptr->info = s->info;
+                s->info = value;
+            }
+        }
+        ptr = ptr->next;
+    }
+}
+
+ /*
+ * Inserting Node at last
+ */
+void single_llist::insert_last()
     struct node *temp, *s;
     temp = create_node(value);
     s = start;
@@ -180,7 +205,6 @@ void single_llist::insert_last()
     cout<<"Element Inserted at last"<<endl;
 }
 
->>>>>>> origin/R171219005
 /*
  * Insertion of node at a given position
  */
@@ -230,6 +254,7 @@ void single_llist::insert_pos()
         cout<<"Positon out of range"<<endl;
     }
 }
+
 /*
  * Update a given Node
  */
