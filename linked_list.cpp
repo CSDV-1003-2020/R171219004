@@ -356,4 +356,52 @@ void single_llist::reverse()
         ptr2->next = ptr1;         
     }
     start = ptr2;
+/*
+ * Display Elements of a link list
+ */
+void single_llist::display()
+{
+    struct node *temp;
+    if (start == NULL)
+    {
+        cout<<"The List is Empty"<<endl;
+        return;
+    }
+    temp = start;
+    cout<<"Elements of list are: "<<endl;
+    while (temp != NULL)
+    {
+        cout<<temp->info<<"->";
+        temp = temp->next;
+    }
+    cout<<"NULL"<<endl;
+
+/*
+ * Searching an element
+ */
+void single_llist::search()
+{
+    int value, pos = 0;
+    bool flag = false;
+    if (start == NULL)
+    {
+        cout<<"List is empty"<<endl;
+        return;
+    }
+    cout<<"Enter the value to be searched: ";
+    cin>>value;
+    struct node *s;
+    s = start;
+    while (s != NULL)
+    {
+        pos++;
+        if (s->info == value)
+        {
+            flag = true;
+            cout<<"Element "<<value<<" is found at position "<<pos<<endl;
+        }
+        s = s->next;
+    }
+    if (!flag)
+        cout<<"Element "<<value<<" not found in the list"<<endl;  
 }
